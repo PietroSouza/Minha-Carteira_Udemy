@@ -5,6 +5,7 @@ import ContentHeader from '../../components/ContentHeader'
 import SelectInput from '../../components/SelectInput'
 import WalletBox from '../../components/WalletBox'
 import MessageBox from '../../components/MessageBox'
+import PieChartBox from '../../components/PieChartBox'
 
 import gains from '../../repositories/gains'
 import expenses from '../../repositories/expenses'
@@ -17,11 +18,6 @@ import grinning from '../../assets/grinning.svg';
 const Dashboard: React.FC = () => {
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth()+1);
     const [yearSelected, setYearSelected] = useState<number>(new Date().getFullYear());
-
-    const options = [
-        {value: 'Eu', label: 'eu'},
-        {value: 'Ele', label:'ele'}
-    ]
 
     const months = useMemo(() => {
         return listOfMonths.map((month, index) => {
@@ -105,7 +101,7 @@ const Dashboard: React.FC = () => {
                 footerText:"Verifique seus gastos, corte coisas desnecessárias.",
                 icon: sadImg
             }
-        } else if( totalBalance == 0){
+        } else if( totalBalance === 0){
             return{ 
                 title: "Ufa!",
                 description: "Neste mês, você gastou tudo!",
@@ -122,8 +118,30 @@ const Dashboard: React.FC = () => {
         }
 
     },[totalBalance]);	
- 
 
+    const relationExpensesXGains = useMemo(() => {
+        const total = totalGains + totalExpenses;
+
+        const percentGains = (totalGains / total) * 100;
+        const percentExpenses = (totalExpenses / total) * 100;
+
+        const data = [
+            {
+                name:"Entradas",
+                value: totalExpenses,
+                percent: Number(percentGains.toFixed(1)),
+                color: "#F7931B"
+            },
+            {
+                name:"Saídas",
+                value: totalExpenses,
+                percent: Number(percentExpenses.toFixed(1)),
+                color: "#E44C4E"
+            }
+        ];
+        return data;
+    },[totalGains, totalExpenses]);
+ 
     const handleMonthSelected = (month: string) => {
         try{
             const parseMonth = Number(month);
@@ -177,6 +195,10 @@ const Dashboard: React.FC = () => {
                     description={message.description}
                     footerText={message.footerText}
                     icon={message.icon}
+                />
+
+                <PieChartBox
+                    data={relationExpensesXGains}
                 />
             </Content>
         </Container>

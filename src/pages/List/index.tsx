@@ -86,7 +86,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             const filtered = frequencyFilterSelected.filter(item => item !== frequency);
             setFrequencyFilterSelected(filtered);
         }else{
-            setFrequencyFilterSelected((prev) => [... prev, frequency]);
+            setFrequencyFilterSelected((prev) => [...prev, frequency]);
         }
     }
 
