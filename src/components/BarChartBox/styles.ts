@@ -16,6 +16,14 @@ export const Container = styled.div`
     border-radius: 7px;
 
     display:flex;
+
+    @media (max-width:1200px){
+        display:flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: auto;
+    }
 `;
 
 export const SideLeft = styled.div`
@@ -48,6 +56,11 @@ export const SubtitleContainer = styled.ul`
         background-color: ${props => props.theme.colors.tertiary};
         border-radius:10px;
     }
+
+    @media (max-width:1200px){
+        display:flex;
+        height:auto;
+    }
 `;
 
 export const Subtitle = styled.li<ISubtitleProps>`
@@ -71,6 +84,15 @@ export const Subtitle = styled.li<ISubtitleProps>`
 
     > span{
         margin-left: 5px;
+    }
+
+    @media (max-width:420px){
+        > div{
+            width: 35px;
+            height: 35px;
+            font-size: 12px;
+            line-height: 35px;
+        }
     }
 `;
 
