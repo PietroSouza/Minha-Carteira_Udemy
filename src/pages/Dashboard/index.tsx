@@ -232,12 +232,14 @@ const Dashboard: React.FC = () => {
                 amount: amountRecurrent,
                 percent: recurrentPercent ? recurrentPercent : 0,
                 color: "#F7931B",
+                fill: "#F7931B",
             },
             {
                 name: 'Eventuais',
                 amount: amountEventual,
                 percent: eventualPercent ? eventualPercent : 0,
                 color: "#E44C4E",
+                fill: "#E44C4E",
             }
         ]
 
@@ -274,12 +276,14 @@ const Dashboard: React.FC = () => {
                 amount: amountRecurrent,
                 percent: recurrentPercent ? recurrentPercent : 0,
                 color: "#F7931B",
+                fill: "#F7931B",
             },
             {
                 name: 'Eventuais',
                 amount: amountEventual,
                 percent: eventualPercent ? eventualPercent : 0,
                 color: "#E44C4E",
+                fill: "#E44C4E",
             }
         ]
 

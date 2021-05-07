@@ -36,6 +36,7 @@ export const Container = styled.div<IContainerProps>`
 
     > img {
         position: absolute;
+        z-index: 1;
 
         height: 110%;
         top:-10px;
@@ -47,12 +48,20 @@ export const Container = styled.div<IContainerProps>`
     > span {
         font-size: 20px;
         font-weight: 500;
+        z-index: 2;
+
     }
 
     > small {
         font-size: 12px;
         position: absolute;
         bottom: 10px;
+        z-index: 2;
+    }
+
+    > h1 { 
+        z-index: 2;
+        position: relative;
     }
 
     @media(max-width: 770px){
